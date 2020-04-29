@@ -293,7 +293,6 @@ void stop_cpu(int fd, int socid)
     read_result = *((unsigned long*)virt_addr);
 
     if (!strcmp("i.MX7 Dual", socs[socid].detect_name)){
-      /* A special handling as not tested on MX6 yet. */
       *((unsigned long*)virt_addr) = (read_result & (socs[socid].stop_and)) | IMX7D_SW_M4C_NON_SCLR_RST;
       read_result = *((unsigned long*)virt_addr);
       assert(read_result & IMX7D_SW_M4C_NON_SCLR_RST);
@@ -352,7 +351,7 @@ void start_cpu(int fd, int socid)
 
 
     if (!strcmp("i.MX7 Dual", socs[socid].detect_name)){
-      /* A special handling as not tested on MX6 yet. The start masks sets platform/core _self-clearing_
+      /* The start masks sets platform/core _self-clearing_
        * bits. These we should wait for to be cleared, to know that the resets finished. */
         wait_bits_cleared( virt_addr,
             (read_result & (socs[socid].start_and)) | socs[socid].start_or,
