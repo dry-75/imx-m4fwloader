@@ -1,0 +1,9 @@
+29.04.2020, D.RY
+
+Stuff in here are for using Segger's JLink debug probe/monitor on an iMX7x. It _may_ be of use if
+you not on some prob cushy IDE or setup which hides-handles init connection for you.
+
+This may help.. or it may break things further for you.
+
+Started off here: https://community.nxp.com/thread/461296
+
